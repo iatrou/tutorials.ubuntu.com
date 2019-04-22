@@ -3,12 +3,12 @@ id: snap-a-python-application
 summary: In this tutorial, you’ll create a snap of a command-line utility for website benchmarking, called httpstat. This utility is written in Python and requires only access to the network to perform its task
 categories: packaging
 environment: snapcraft, usage, build, beginner, python
-status: Draft
-feedback Link: https://github.com/ubuntu/codelabs/issues:
-author: simos
+status: published
+feedback_url: https://github.com/canonical-websites/tutorials.ubuntu.com/issues
 tags: python,network,interface
 difficulty: 2
 published: 2017-02-14
+author: Canonical Web Team (formerly "simos") <webteam@canonical.com>
 
 ---
 
@@ -537,7 +537,7 @@ We are almost there, but as you saw, this didn’t work! Indeed, the snap does n
 
 negative
 : Important: The error message was curl error: `curl: (6) Couldn't resolve host 'www.ubuntu.com'`. When trying to make an Internet connection, an app needs to first _resolve_ the name of the server into the IP address. When there is no access to the Internet, the `resolve` (the first step towards a network connection) will not work, thus this error. A snap with `confinement: strict` does not have any access to the Internet, unless explicitly allowed.
-```
+
 ### Enabling access to network
 
 To allow networking access to a snap, we need to specify that networking is OK for this snap. `network` is an **interface** in snaps and it is one of the many supported interfaces for snaps. There is the notion of `plugs` (provider of resource) and `slots` (consumer of resource). For most cases, like this one here, we need a plug, a plug for network.
@@ -648,7 +648,7 @@ You now know how to snap a simple Python application, the available options and 
 [httpstat]: https://github.com/reorx/httpstat
 [https://www.ubuntu.com]: https://www.ubuntu.com
 [basic snap usage]: https://tutorials.ubuntu.com/tutorial/basic-snap-usage
-[create your first snap]: https://tutorials.ubuntu.com/tutorial/create-first-snap
+[create your first snap]: https://tutorials.ubuntu.com/tutorial/create-your-first-snap
 [here]: https://github.com/ubuntu/snap-tutorials-code/tree/master/snap-python-app/step3
 [this]: https://github.com/ubuntu/snap-tutorials-code/tree/master/snap-python-app/final
 [snapcraft forum]: https://forum.snapcraft.io/

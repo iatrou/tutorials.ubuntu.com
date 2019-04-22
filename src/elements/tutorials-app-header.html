@@ -8,21 +8,35 @@
 <dom-module id="tutorials-app-header">
   <template>
     <style>
+      :host {
+        @apply --header-size;
+
+        --header-size: {
+          height: 48px;
+          width: 100%;
+        }
+      }
+
       app-header {
         background-color: var(--app-primary-color);
         color: white;
         padding: 0;
+
+        @apply --header-size;
       }
 
       app-header-layout {
         z-index: 9999;
+
+        @apply --header-size;
       }
 
       app-toolbar {
         margin: 0 auto;
         max-width: 984px;
         padding: 0;
-        height: 48px;
+
+        @apply --header-size;
       }
 
       .app-logo {
@@ -45,28 +59,22 @@
         --paper-input-container-input-color: white;
       }
     </style>
-    <app-header-layout>
-      <template is="dom-if" if="[[!hidden]]">
+    <app-header-layout fullbleed>
         <app-header fixed>
           <app-toolbar>
             <div class="app-logo">
               <a href="/">
-                  <tutorials-app-logo></tutorials-app-logo>
+                <tutorials-app-logo></tutorials-app-logo>
               </a>
             </div>
           </app-toolbar>
         </app-header>
-      </template>
     </app-header-layout>
   </template>
 
   <script>
     Polymer({
       is: 'tutorials-app-header',
-
-      properties: {
-        hidden: false,
-      },
     });
   </script>
 </dom-module>

@@ -2,12 +2,12 @@
 id: advanced-snap-usage
 summary: Learn advanced techniques and features of snapd. What happens when installing a snap, how to access service logs and configure snaps, connect interfaces and change confinement modes? We’ll detail it all and even more here for you!
 categories: packaging
-status: Published
-feedback-link: https://github.com/ubuntu/codelabs/issues
+status: published
+feedback_url: https://github.com/canonical-websites/tutorials.ubuntu.com/issues
 tags: snap, usage, classic, devmode, classic, confinement, service, log, interface, configuration, hook, file system
 difficulty: 3
 published: 2017-04-07
-Author: Didier Roche <didier.roche@canonical.com>
+author: Didier Roche <didier.roche@canonical.com>
 
 ---
 
@@ -460,7 +460,7 @@ Slot                              Plug
 
 This list of interfaces evolves over time. It also depends on your hardware capabilities (the gadget snap, to be precise), which defines which additional interfaces your device can expose, like GPIO devices, camera, I2C and such…
 
-You have the confirmation here that `chuck-norris-webserver` connects its **network-observe** plug to the **network-observe** slot from the core snap (slot, plug and interface names are abbreviated when they all match). This interface is used for the daemon to listen on a TCP port, which is kind of useful for a webserver to accept incoming requests on that port! Note that you didn’t have to do anything manually. The slot and plugs have been connected automatically.
+You have the confirmation here that `chuck-norris-webserver` connects its **network-bind** plug to the **network-bind** slot from the core snap (slot, plug and interface names are abbreviated when they all match). This interface is used for the daemon to listen on a TCP port, which is kind of useful for a webserver to accept incoming requests on that port! Note that you didn’t have to do anything manually. The slot and plugs have been connected automatically.
 It’s similar for the **network** interface which is needed by the command line tool to get access to the network.
 
 On the contrary, the last line will show that the **camera** plug isn’t connected to the core **camera** slot. Indeed, some interfaces will auto-connect on install (the ones considered safe, like having access to the network), some won’t (like accessing the user’s camera). This default behavior is defined in snapd and the gadget snap of your device. You can refer to relevant tutorials on how to create a device and the gadget snap for overriding the default policy of your device.

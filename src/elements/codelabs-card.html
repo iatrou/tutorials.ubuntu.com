@@ -23,8 +23,10 @@
         font-family: 'Ubuntu', Helvetica, Arial;
         height: 100%;
         position: relative;
+        width: 100%;
 
         --paper-card-content: {
+          height: 100%;
           padding: 0;
         };
       }
@@ -32,6 +34,9 @@
       paper-card a {
         color: var(--primary-text-color);
         overflow: hidden;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
       }
 
       .header {
@@ -41,6 +46,7 @@
         min-height: 120px;
         color: #fff;
         border-radius: 2px 2px 0 0;
+        flex: 1;
       }
 
       .body {
@@ -68,8 +74,8 @@
       }
 
       .duration {
-        text-align: right;
-        width: 100%;
+        min-width: 109px;
+        align-self: flex-end;
       }
 
       .card-actions {
@@ -84,14 +90,14 @@
       }
 
       .summary {
-        height: 170px;
+        min-height: 200px;
         margin: 0;
       }
 
       .meta {
         color: var(--secondary-text-color);
         font-size: 0.875em;
-        white-space: nowrap;
+        flex-wrap: wrap;
       }
 
       .meta--tags {
@@ -112,14 +118,26 @@
       .duration__value {
         color: var(--primary-text-color);
       }
+
+      .layout.start-justified {
+        justify-content: space-between;
+      }
+
+      .label {
+        height: 28px;
+        position: absolute;
+        right: 0;
+      }
     </style>
 
     <paper-card>
       <div class="card-content">
-        <a href="/tutorial/[[url]][[generateBackParameter]]" title="[[heading]]">
+        <a href="/tutorial/[[url]][[generateBackParameter]]#0" title="[[heading]]">
           <div class="header vertical layout">
             <div class="horizontal end-justified layout">
-              <div class="light card-category">[[firstcategory]]</div>
+              <div class="light card-category">[[firstcategory]]
+                <img class="label" src="[[label]]">
+              </div>
             </div>
             <h2 class="heading">[[heading]]</h2>
           </div>
@@ -158,6 +176,10 @@
         difficulty: Number,
         duration: Number,
         tags: Array,
+        label: {
+          type: String,
+          computed: '_extractLabelTag(tags)',
+        },
         published: {
           type: String,
         },
@@ -172,6 +194,13 @@
       _extractFirstCategory: function(category) {
         let firstcategory = category[0];
         return firstcategory;
+      },
+
+      _extractLabelTag: function(tags) {
+        if (tags.includes('gci')) {
+          return 'https://assets.ubuntu.com/v1/e963a887-label-gci.png';
+        };
+        return '';
       },
 
       _generateBackParameter: function(currenturl) {
